@@ -22,11 +22,12 @@ def summarize_text(title, input_text):
         messages=[
             {
                 "role": "system",
-                "content": "You are ChatGPT, a large language model trained by OpenAI to summarize text in markdown format. Generate a title based on the following content as the header of file and Provide 10 bullet points or less to summarize the following content:",
+                "content": "You are ChatGPT, a large language model trained by OpenAI to summarize text in markdown format.",
             },
             {
                 "role": "user",
-                "content": input_text,
+                "content": "Generate a title as header and provide 10 bullet points short sentences \\\
+                to summarize the following content in markdown format:" + input_text,
             },
         ],
     )
