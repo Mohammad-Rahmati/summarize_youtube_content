@@ -1,0 +1,5 @@
+youtube_transcript_api==0.4.1
+pytube==11.0.1
+pexpect==4.8.0
+openai==0.27.0
+python-dotenv==0.19.2
