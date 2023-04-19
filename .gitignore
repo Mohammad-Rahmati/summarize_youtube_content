@@ -1,5 +1,5 @@
-test.ipynb
-*.json
 data/
 __pycache__/
 output/summary.md
+test.ipynb
+*.json
