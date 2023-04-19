@@ -1,0 +1,5 @@
+test.ipynb
+*.json
+*.txt
+__pycache__/
+output/summary.md
