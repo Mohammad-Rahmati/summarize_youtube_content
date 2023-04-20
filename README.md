@@ -4,7 +4,8 @@ This script is designed to download subtitles from a YouTube video, and then gen
 
 ![image](https://user-images.githubusercontent.com/22165051/233439941-128ef583-13c4-4018-b192-92c696e140cc.png)
 
-![image](https://user-images.githubusercontent.com/22165051/233440329-11bcc14c-ec17-45c9-9724-aa3336302034.png)
+![image](https://user-images.githubusercontent.com/22165051/233443541-9093f56f-6135-46aa-9900-463e85f9531d.png)
+
 
 ## Instructions:
 
