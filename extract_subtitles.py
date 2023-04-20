@@ -11,7 +11,7 @@ def extract_subtitles(url):
             title = YouTube(url).title
             GREEN = "\033[32m"
             RESET = "\033[0m"
-            print(f"{GREEN}'Title: '{title}{RESET}")
+            print(f"{GREEN}Title: {title}{RESET}")
             break
         except Exception as e:
             pass
