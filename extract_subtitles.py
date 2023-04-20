@@ -4,7 +4,7 @@ from pytube import YouTube
 from youtube_transcript_api import YouTubeTranscriptApi
 
 
-def extract_subtitles(url):
+def extract_subtitles(url: str) -> (str, str):
     video_id = YouTube(url).video_id
     while True:
         try:
@@ -23,6 +23,7 @@ def extract_subtitles(url):
             subtitles += entry["text"] + " "
 
     except Exception as e:
-        return e
+        return print(e)
+        sys.exit()
 
     return title, subtitles

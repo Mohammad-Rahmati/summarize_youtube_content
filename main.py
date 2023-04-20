@@ -12,7 +12,7 @@ try:
     import threading
 
 except Exception as e:
-    print("Some modules are missing")
+    print("Some modules are missing. Installing the requirements...")
     try:
         os.system("pip install -r requirements.txt")
         print("\n\n\nrun the script again")
@@ -20,10 +20,7 @@ except Exception as e:
     except:
         print("error: ", e)
 
-
-openai.api_key = os.environ["OPENAI_API_KEY"]
-
-def waiting_animation():
+def waiting_animation() -> None:
     chars = "|/-\\"
     while True:
         for char in chars:
@@ -31,7 +28,7 @@ def waiting_animation():
             sys.stdout.flush()
             time.sleep(0.1)
 
-def summarize_text(title, input_text):
+def summarize_text(title: str, input_text: str) -> str:
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -50,8 +47,9 @@ def summarize_text(title, input_text):
     summary = completion.choices[0]["message"]["content"]
     return summary
 
-def main(url):
+def main(url: str) -> None:
 
+    openai.api_key = os.environ["OPENAI_API_KEY"]
     animation_thread = threading.Thread(target=waiting_animation)
     animation_thread.daemon = True
     title, input_text = extract_subtitles(url)
@@ -63,12 +61,13 @@ def main(url):
     console = Console()
     console.print(Markdown(summary))
     print('\n')
+    sys.stdout.write("\033[?25h")
+    sys.stdout.flush()
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         url = sys.argv[1]
         main(url)
-        sys.stdout.write("\033[?25h")
-        sys.stdout.flush()
+
     else:
         print("Please provide a URL as a command-line argument.")
