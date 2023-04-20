@@ -2,6 +2,8 @@
 try:
     import os
     import openai
+    from rich.console import Console
+    from rich.markdown import Markdown
     from extract_subtitles import extract_subtitles
     import sys
 
@@ -37,27 +39,13 @@ def summarize_text(title, input_text):
 
 def main(url):
     try:
-        video_id, title = extract_subtitles(url)
+        title, subtitles = extract_subtitles(url)
 
-        with open(f"data/{video_id}_subtitles.txt", "r") as file:
-            input_text = file.read()
-        
         print("Summarizing...")
-        summary = summarize_text(title, input_text)
-
-        if not os.path.exists("output"):
-            os.makedirs("output")
-
-        with open("output/summary.md", "w") as file:
-            file.write(summary)
-
-        print("Summary saved to output/summary.md")
-
-        try:
-            os.system("bat output/summary.md")
-        except:
-            os.system("open output/summary.md")
-
+        summary = summarize_text(title, subtitles)
+        console = Console()
+        console.print(Markdown(summary))
+        print('\n')
     except Exception as e:
         print("error: ", e)
 

@@ -9,7 +9,9 @@ def extract_subtitles(url):
     while True:
         try:
             title = YouTube(url).title
-            print(f"Title: {title}")
+            GREEN = "\033[32m"
+            RESET = "\033[0m"
+            print(f"{GREEN}'Title: '{title}{RESET}")
             break
         except Exception as e:
             pass
@@ -20,15 +22,7 @@ def extract_subtitles(url):
         for entry in transcript:
             subtitles += entry["text"] + " "
 
-        if not os.path.exists("data"):
-            os.makedirs("data")
-
-        with open(f"data/{video_id}_subtitles.txt", "w", encoding="utf-8") as file:
-            file.write(subtitles)
-
-        print(f"Subtitles saved to {video_id}_subtitles.txt")
-
     except Exception as e:
         return e
 
-    return video_id, title
+    return title, subtitles
