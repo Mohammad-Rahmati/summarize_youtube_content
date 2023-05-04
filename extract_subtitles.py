@@ -17,8 +17,8 @@ def extract_subtitles(url: str) -> (str, str):
         except Exception as e:
             time.sleep(0.1)
             counter += 1
-            if counter > 10:
-                print('could not get title.')
+            if counter > 3:
+                print('could not get the title!')
                 title = ""
                 break
             pass

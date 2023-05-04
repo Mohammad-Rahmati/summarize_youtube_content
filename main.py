@@ -5,7 +5,7 @@ try:
     sys.stdout.flush()
     import os
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv("/home/mo/Documents/summarize_youtube_content/.env")
     import openai
     from rich.console import Console
     from rich.markdown import Markdown
@@ -18,7 +18,7 @@ except Exception as e:
     try:
         os.system("pip install -r requirements.txt")
         print("\n\n\nrun the script again")
-        exit()
+
     except:
         print("error: ", e)
 
