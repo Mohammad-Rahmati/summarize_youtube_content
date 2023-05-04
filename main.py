@@ -4,6 +4,8 @@ try:
     sys.stdout.write("\033[?25l")
     sys.stdout.flush()
     import os
+    from dotenv import load_dotenv
+    load_dotenv()
     import openai
     from rich.console import Console
     from rich.markdown import Markdown
@@ -49,7 +51,7 @@ def summarize_text(title: str, input_text: str) -> str:
 
 def main(url: str) -> None:
 
-    openai.api_key = os.environ["OPENAI_API_KEY"]
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     animation_thread = threading.Thread(target=waiting_animation)
     animation_thread.daemon = True
     title, input_text = extract_subtitles(url)
